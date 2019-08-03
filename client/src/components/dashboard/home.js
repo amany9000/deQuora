@@ -1,8 +1,32 @@
 import React, { Component } from "react";
 import Navigation from "../layout/Navbar";
 import "../../css/home.css";
+import{NavLink} from 'react-router-dom';
 
 class Home extends Component {
+  
+
+  state={
+    fileHash:null,
+    copySuccess:''
+  }
+
+ buttonClick = ()=>{
+    this.setState({
+      fileHash:"ASIFFD5458478423DFDDFUH34"
+    })
+ }
+
+   copyToClipboard = (e) => {
+    this.textArea.select();
+    document.execCommand('copy');
+    // This is just personal preference.
+    // I prefer to not show the the whole text area selected.
+    e.target.focus();
+    this.setState({ copySuccess: 'Copied!' });
+  };
+
+
   render() {
     return (
       <React.Fragment>
@@ -63,6 +87,15 @@ class Home extends Component {
                   </ul>
                 </div>
               </div>
+
+
+
+
+
+
+
+
+
               <div className="content-column w-col w-col-9">
                 <div className="card mb-4 homeCard">
                   <div className="row">
@@ -73,31 +106,110 @@ class Home extends Component {
                     </div>
                     <div className="col-md-10">
                       <div
-                        className="card-title mt-3"
+                        className="card-title mt-2"
                         style={{ fontSize: "20px", marginLeft: "-25px" }}
                       >
                         Rohan Dhoot
                       </div>
                     </div>
                   </div>
+                   <div className="row">
+                    <div className="col-md-12">
+                      <input style={{width:"100px"}}
+                        type="text"
+                        className="title"
+                        placeholder="Title of the question"
+                      />
+                    </div>
+                  </div>
                   <div className="row">
-                    <div className="col-md-10">
+                    <div className="col-md-12">
                       <input
                         type="text"
                         className="question"
-                        placeholder="What is your question?"
+                        placeholder="Add Description"
                       />
                     </div>
-                    <div className="col-md-2">
-                      <div>
-                        <img
-                          src={require("../../images/submit.svg")}
-                          className="questionSubmit"
-                        />
-                      </div>
-                    </div>
                   </div>
+                  <div>
+                  <div className="row">
+                    <div className="col-md-10 ">
+                    {
+
+                    }
+                      <button 
+                      onClick={() => this.buttonClick()}
+                       className="btn btn-outline-primary ">
+                       Upload to IPFS
+                      </button>
+                    </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-12">
+
+                      {
+                        this.state.fileHash?
+                        <div className="row" >
+                        <div className="col-md-3 ">
+                         <p className="text-success float-left ">  Your IPFS hash:</p> 
+                         </div>
+                         <div className="col-md-9 ">
+                            <div style={{display:"flex", justifyContent:"space-between"}} className="row ">
+                            <div  className="col-md-6">
+                            
+                              <input style={{width:"300px",height:"40px"}} type="text" editable="false"
+                                ref={(textarea) => this.textArea = textarea}
+                                value='ASIFFD5458478423DFDDFUH34'/>
+                            
+                            </div>
+                            <div className="col-md-3">
+                          {
+         
+                             document.queryCommandSupported('copy') &&
+                                <button className="btn btn-primary"onClick={this.copyToClipboard}>
+                                Copy</button> 
+                                
+                              
+                            }
+                            </div>
+
+                            </div>
+                         </div>
+                         
+                         </div>
+                        :
+                        <div>
+                        <p  className="text-danger float-left">Please upload the question to IPFS !!</p>
+                        </div>
+                      }
+                        </div>
+                    </div>
+
+                    </div>
+                    <div className="row ">
+                    {
+                      this.state.fileHash ?
+                      <div className="col-md-4">
+                      <button className="btn btn-outline-primary">
+                        Add Question
+                      </button>
+                    </div>
+                  
+
+                  :
+                  <div className="col-md-4">
+                      <button className="btn btn-secondary" disabled>
+                        Add Question
+                      </button>
+                    </div>
+                  
+
+                    }
+                    </div>
                 </div>
+
+
+
                 <div className="card mb-4 homeCard">
                   <div className="row">
                     <div className="col-md-2">
@@ -117,187 +229,32 @@ class Home extends Component {
                         Rohan Dhoot| IIITV
                       </div>
                     </div>
-                    <div className="body">
+                    <div className="body ml-3">
                       The copy warned the Little Blind Text, that where it came
                       from it would have been rewritten a thousand times and
                       everything that was left from its origin would be the word
                       "and" and the Little Blind <a href=""> (Read more...)</a>
                     </div>
-                    <div className="row">
-                      <div className="col-10">
-                        <input type="text" className="comment" />
-                      </div>
-                      <div className="col-2">
-                        <div>
-                          <img
-                            src={require("../../images/submit.svg")}
-                            className="submit"
-                          />
-                        </div>
-                      </div>
-                    </div>
+
+                  
                   </div>
-                </div>
-                <div className="card mb-4 homeCard">
-                  <div className="row">
-                    <div className="col-md-2">
-                      <div className="round">
-                        <i className="fa fa-user logo" />
+
+                  <div className="row mt-4 ">
+                      <div className="col-md-12">
+                      <NavLink to='/addAnswer' >
+                      <button className="btn btn-primary float-right" >
+                        Answer question
+                      </button>
+                      </NavLink>
                       </div>
-                    </div>
-                    <div className="col-md-10">
-                      <div className="card-title">
-                        What is Blockchain ?
-                        <span style={{ float: "right" }} className="text-muted">
-                          {" "}
-                          11h ago
-                        </span>
-                      </div>
-                      <div className="card-subtitle text-muted">
-                        Rohan Dhoot | IIITV
-                      </div>
-                    </div>
-                    <div className="body">
-                      The copy warned the Little Blind Text, that where it came
-                      from it would have been rewritten a thousand times and
-                      everything that was left from its origin would be the word
-                      "and" and the Little Blind <a href=""> (Read more...)</a>
-                    </div>
-                    <div className="row">
-                      <div className="col-md-10">
-                        <input type="text" className="comment" />
-                      </div>
-                      <div className="col-md-2">
-                        <div>
-                          <img
-                            src={require("../../images/submit.svg")}
-                            className="submit"
-                          />
-                        </div>
-                      </div>
-                    </div>
                   </div>
+
                 </div>
-                <div className="card mb-4 homeCard">
-                  <div className="row">
-                    <div className="col-md-2">
-                      <div className="round">
-                        <i className="fa fa-user logo" />
-                      </div>
-                    </div>
-                    <div className="col-md-10">
-                      <div className="card-title">
-                        What are your views about stranger things ?
-                        <span style={{ float: "right" }} className="text-muted">
-                          {" "}
-                          11h ago
-                        </span>
-                      </div>
-                      <div className="card-subtitle text-muted">
-                        Dipansh Khandelwal| Delhi
-                      </div>
-                    </div>
-                    <div className="body">
-                      The copy warned the Little Blind Text, that where it came
-                      from it would have been rewritten a thousand times and
-                      everything that was left from its origin would be the word
-                      "and" and the Little Blind <a href=""> (Read more...)</a>
-                    </div>
-                    <div className="row">
-                      <div className="col-md-10">
-                        <input type="text" className="comment" />
-                      </div>
-                      <div className="col-md-2">
-                        <div>
-                          <img
-                            src={require("../../images/submit.svg")}
-                            className="submit"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="card mb-4 homeCard">
-                  <div className="row">
-                    <div className="col-md-2">
-                      <div className="round">
-                        <i className="fa fa-user logo" />
-                      </div>
-                    </div>
-                    <div className="col-md-10">
-                      <div className="card-title">
-                        How are the hostel facilities at IIITV?
-                        <span style={{ float: "right" }} className="text-muted">
-                          {" "}
-                          11h ago
-                        </span>
-                      </div>
-                      <div className="card-subtitle text-muted">
-                        Aman Yadav | Hostel
-                      </div>
-                    </div>
-                    <div className="body">
-                      The copy warned the Little Blind Text, that where it came
-                      from it would have been rewritten a thousand times and
-                      everything that was left from its origin would be the word
-                      "and" and the Little Blind <a href=""> (Read more...)</a>
-                    </div>
-                    <div className="row">
-                      <div className="col-md-10">
-                        <input type="text" className="comment" />
-                      </div>
-                      <div className="col-md-2">
-                        <div>
-                          <img
-                            src={require("../../images/submit.svg")}
-                            className="submit"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="card mb-4 homeCard">
-                  <div className="row">
-                    <div className="col-md-2">
-                      <div className="round">
-                        <i className="fa fa-user logo" />
-                      </div>
-                    </div>
-                    <div className="col-md-10">
-                      <div className="card-title">
-                        How are the hostel facilities at IIITV?
-                        <span style={{ float: "right" }} className="text-muted">
-                          {" "}
-                          11h ago
-                        </span>
-                      </div>
-                      <div className="card-subtitle text-muted">
-                        Rohan Dhoot | IIITV
-                      </div>
-                    </div>
-                    <div className="body">
-                      The copy warned the Little Blind Text, that where it came
-                      from it would have been rewritten a thousand times and
-                      everything that was left from its origin would be the word
-                      "and" and the Little Blind <a href=""> (Read more...)</a>
-                    </div>
-                    <div className="row">
-                      <div className="col-md-10">
-                        <input type="text" className="comment" />
-                      </div>
-                      <div className="col-md-2">
-                        <div>
-                          <img
-                            src={require("../../images/submit.svg")}
-                            className="submit"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                
+
+
+
+               
               </div>
             </div>
           </div>

@@ -109,23 +109,32 @@ div {
 }
 
 .comment {
-  width: 40vw !important;
+  width: 55vw !important;
   margin-top: 2.5vmin;
   border-radius: 0 25px 0 25px !important;
 }
 
 .submit {
-  width: 6vmin;
-  margin: 4vmin 0 0 4vmin;
+  width: 10vmin;
+  margin: 4vmin 0 0 0;
+   border-radius: 10px 10px 10px 10px !important;
 }
 
 .question {
   width: 40vw !important;
-  margin-top: 2.5vmin;
+  margin-top: 1vmin;
   border-radius: 0 25px 0 25px !important;
 }
 
 .questionSubmit {
   width: 6vmin;
   margin: 4vmin 0 0 4vmin;
+}
+
+.title{
+
+    width: 30vw !important;
+  margin-top: 1vmin;
+  
+
 }
