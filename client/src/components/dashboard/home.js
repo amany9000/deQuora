@@ -8,7 +8,9 @@ class Home extends Component {
 
   state={
     fileHash:null,
-    copySuccess:''
+    copySuccess:'',
+    votes:0,
+    comments:0
   }
 
  buttonClick = ()=>{
@@ -233,11 +235,12 @@ class Home extends Component {
                       The copy warned the Little Blind Text, that where it came
                       from it would have been rewritten a thousand times and
                       everything that was left from its origin would be the word
-                      "and" and the Little Blind <a href=""> (Read more...)</a>
+                      "and" and the Little Blind
                     </div>
 
                   
                   </div>
+                      
 
                   <div className="row mt-4 ">
                       <div className="col-md-12">
