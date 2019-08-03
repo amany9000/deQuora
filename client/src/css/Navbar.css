@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
+.navDiv {
+  font-family: "Lato", sans-serif;
+  outline: none;
+  letter-spacing: 0.3175px;
+  z-index: 100;
+  color: white !important;
+  top: 0;
+  background-color: rgb(89, 78, 255);
+}
+
+.navbarBrand {
+  color: white;
+  font-size: 4vmin !important;
+  text-align: center;
+  text-shadow: 2px 2px 4px #000000;
+}
+.navbarBrand:hover {
+  color: white;
+}
+.toggleButton {
+  padding: 0.25rem 0.75rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  background-color: transparent;
+  border: 1px solid #fff !important;
+  border-radius: 0.25rem;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
+}
+
+.nav-link {
+  color: #fff;
+}
+
+.nav-link:hover,
+.nav-link:active {
+  color: #fff;
+  text-decoration: underline !important;
+}
+
+li {
+  font-size: 3vmin;
+  margin: 0 1vw;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .navbarBrand {
+    font-size: 4vmin !important;
+  }
+  .navbarBrand:hover {
+    font-size: 4.1vmin !important;
+  }
+  li {
+    font-size: 3vmin;
+    margin: 0 1vw 0 1vw;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .navbarBrand {
+    font-size: 4vmin !important;
+  }
+  .navbarBrand:hover {
+    font-size: 4.1vmin !important;
+  }
+}
+
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}

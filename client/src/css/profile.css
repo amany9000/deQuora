@@ -1,0 +1,43 @@
+.back-img {
+  margin-top: 10vh;
+  width: 100%;
+  max-height: 200px;
+  min-height: 120px;
+
+}
+
+.icon-img {
+  height: 25vmin;
+  width: 25vmin;
+  display: flex;
+  margin: -12vmin auto 0;
+  border-radius: 50%;
+}
+.profile {
+  margin: 2vmin 40px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  border-bottom: solid 1px #ccc;
+}
+.profile > h5 {
+  color: grey;
+}
+.profile > p {
+  margin-bottom: 10vmin;
+}
+
+.but {
+  padding: 5px 20px;
+  line-height: 0.5;
+  border: 1.2px solid #6c63ff;
+  color: #6c63ff;
+  background-color: transparent;
+  font-weight: 400;
+  transition: 0.7s;
+  white-space: nowrap;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.7s;
+  margin-left: -2vmin;
+  text-decoration: none;
+}

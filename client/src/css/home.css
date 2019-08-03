@@ -1,0 +1,131 @@
+.content-wrapper {
+  padding: 16vh 0 50px 0;
+  background: url("../images/homebackground.svg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.w-container {
+  margin: 0 auto;
+  max-width: 940px;
+}
+.w-container::before,
+.w-container::after {
+  content: " ";
+  display: table;
+  grid-column-start: 1;
+  grid-row-start: 1;
+  grid-column-end: 2;
+  grid-row-end: 2;
+}
+
+.w-container::after {
+  clear: both;
+}
+
+.w-container .w-row {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.w-row::before,
+.w-row::after {
+  content: " ";
+  display: table;
+  grid-column-start: 1;
+  grid-row-start: 1;
+  grid-column-end: 2;
+  grid-row-end: 2;
+}
+
+.w-row::after {
+  clear: both;
+}
+
+.w-col-3 {
+  width: 25%;
+  position: static !important;
+}
+.w-col {
+  float: left;
+  min-height: 1px;
+  padding: 0 10px;
+}
+
+.white-wrapper {
+  padding: 20px;
+  border-radius: 0px 0px 5px 5px;
+  background-color: rgb(239, 239, 239);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+.content-column {
+  padding-left: 20px;
+}
+.w-col-9 {
+  width: 75%;
+}
+div {
+  display: block;
+}
+
+.round {
+  background-color: rgba(82, 149, 250, 0.208);
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  text-align: center;
+}
+
+.homeCard {
+  padding: 2vmin;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.logo {
+  margin-top: 17px;
+  font-size: 25px !important;
+}
+
+.sidebar-header {
+  background-color: #fff;
+  padding: 20px;
+  font-size: 3.5vmin;
+  text-align: center;
+  color: rgb(82, 149, 250);
+
+  border-radius: 5px 5px 0 0;
+}
+.body {
+  margin-top: 2vh;
+}
+
+.feed li {
+  list-style: none;
+}
+
+.feed > li {
+  margin: 0px;
+  font-size: 2.3vmin;
+  font-weight: 300;
+}
+
+.comment {
+  width: 40vw !important;
+  margin-top: 2.5vmin;
+  border-radius: 0 25px 0 25px !important;
+}
+
+.submit {
+  width: 6vmin;
+  margin: 4vmin 0 0 4vmin;
+}
+
+.question {
+  width: 40vw !important;
+  margin-top: 2.5vmin;
+  border-radius: 0 25px 0 25px !important;
+}
+
+.questionSubmit {
+  width: 6vmin;
+  margin: 4vmin 0 0 4vmin;
+}

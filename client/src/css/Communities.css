@@ -1,0 +1,74 @@
+.fixing {
+  margin-top: 20vh;
+}
+
+.mainDiv {
+  background: url("../images/background.svg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.paragraph {
+  padding: 0 15vmin;
+  text-align: center;
+}
+.paragraph > p {
+  font-size: 2.5vmin;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(71, 63, 49);
+}
+.seperateLine {
+  margin-top: 1vh;
+  margin-bottom: 2vh;
+  border-bottom: 1px solid #ccc;
+}
+
+.para > p {
+  text-align: left;
+  /* float: left; */
+  font-size: 2vmin;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(71, 63, 49);
+}
+
+.list {
+  list-style: none;
+  margin-bottom: 10px;
+}
+.followPlus {
+  margin-top: 1em;
+  border-radius: 10% !important;
+  background-color: rgba(82, 149, 250, 0.208) !important;
+  color: rgb(131, 130, 207) !important;
+  border-color: rgba(82, 99, 124, 0.208) !important;
+  box-shadow: 0 !important;
+}
+
+.card-subtitle {
+  font-size: 2vmin;
+}
+
+.card-title {
+  font-size: 2.5vmin;
+}
+
+.roundLogo {
+  background-color: rgba(82, 149, 250, 0.208);
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+  text-align: center;
+}
+
+.cLogo {
+  margin-top: 10px;
+  font-size: 20px !important;
+}
+.communityCard {
+  padding: 2vmin;
+}
+
+.bottomMargin {
+  margin-bottom: 3vh !important;
+}
