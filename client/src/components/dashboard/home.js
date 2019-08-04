@@ -1,25 +1,33 @@
 import React, { Component } from "react";
 import Navigation from "../layout/Navbar";
 import "../../css/home.css";
-import{NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 class Home extends Component {
-  
 
-  state={
-    fileHash:null,
-    copySuccess:'',
-    votes:0,
-    comments:0
+
+  state = {
+    fileHash: 'null',
+    copySuccess: '',
+    votes: 0,
+    comments: 0,
+    title: '',
+    description: ""
   }
 
- buttonClick = ()=>{
+  buttonClick = () => {
     this.setState({
-      fileHash:"ASIFFD5458478423DFDDFUH34"
+      fileHash: "ASIFFD5458478423DFDDFUH34"
     })
- }
+  }
 
-   copyToClipboard = (e) => {
+  addQuestion = () => {
+    const { title, description } = this.state
+    console.log(title, description)
+    this.props.questionStoreInstance.methods.askQuestion('dipansh', 'tag', 'des', 3, 4).send({ from: this.props.accounts[5], value: 10 })
+  }
+
+  copyToClipboard = (e) => {
     this.textArea.select();
     document.execCommand('copy');
     // This is just personal preference.
@@ -37,7 +45,7 @@ class Home extends Component {
         <div className="content-wrapper">
           <div className="w-container">
             <div className="w-row">
-              <div className="w-col w-col-3">
+              {/* <div className="w-col w-col-3">
                 <div className="sidebar-header">Feed</div>
                 <div className="white-wrapper">
                   <ul className="feed">
@@ -88,7 +96,7 @@ class Home extends Component {
                     </li>
                   </ul>
                 </div>
-              </div>
+              </div> */}
 
 
 
@@ -115,10 +123,12 @@ class Home extends Component {
                       </div>
                     </div>
                   </div>
-                   <div className="row">
+                  <div className="row">
                     <div className="col-md-12">
-                      <input style={{width:"100px"}}
+                      <input style={{ width: "100px" }}
                         type="text"
+                        onChange={(e) => this.setState({ title: e.target.value })}
+                        value={this.state.title}
                         className="title"
                         placeholder="Title of the question"
                       />
@@ -127,6 +137,8 @@ class Home extends Component {
                   <div className="row">
                     <div className="col-md-12">
                       <input
+                        onChange={(e) => this.setState({ description: e.target.value })}
+                        value={this.state.description}
                         type="text"
                         className="question"
                         placeholder="Add Description"
@@ -134,80 +146,77 @@ class Home extends Component {
                     </div>
                   </div>
                   <div>
-                  <div className="row">
-                    <div className="col-md-10 ">
-                    {
-
-                    }
-                      <button 
-                      onClick={() => this.buttonClick()}
-                       className="btn btn-outline-primary ">
-                       Upload to IPFS
+                    <div className="row">
+                      <div className="col-md-10 ">
+                        <button
+                          onClick={() => this.buttonClick()}
+                          className="btn btn-outline-primary ">
+                          Upload to IPFS
                       </button>
-                    </div>
+                      </div>
                     </div>
                     <div className="row">
-                        <div className="col-md-12">
+                      <div className="col-md-12">
 
-                      {
-                        this.state.fileHash?
-                        <div className="row" >
-                        <div className="col-md-3 ">
-                         <p className="text-success float-left ">  Your IPFS hash:</p> 
-                         </div>
-                         <div className="col-md-9 ">
-                            <div style={{display:"flex", justifyContent:"space-between"}} className="row ">
-                            <div  className="col-md-6">
-                            
-                              <input style={{width:"300px",height:"40px"}} type="text" editable="false"
-                                ref={(textarea) => this.textArea = textarea}
-                                value='ASIFFD5458478423DFDDFUH34'/>
-                            
-                            </div>
-                            <div className="col-md-3">
-                          {
-         
-                             document.queryCommandSupported('copy') &&
-                                <button className="btn btn-primary"onClick={this.copyToClipboard}>
-                                Copy</button> 
-                                
-                              
-                            }
-                            </div>
+                        {
+                          this.state.fileHash ?
+                            <div className="row" >
+                              <div className="col-md-3 ">
+                                <p className="text-success float-left ">  Your IPFS hash:</p>
+                              </div>
+                              <div className="col-md-9 ">
+                                <div style={{ display: "flex", justifyContent: "space-between" }} className="row ">
+                                  <div className="col-md-6">
+
+                                    <input style={{ width: "300px", height: "40px" }} type="text" editable="false"
+                                      ref={(textarea) => this.textArea = textarea}
+                                      value='ASIFFD5458478423DFDDFUH34' />
+
+                                  </div>
+                                  <div className="col-md-3">
+                                    {
+
+                                      document.queryCommandSupported('copy') &&
+                                      <button className="btn btn-primary" onClick={this.copyToClipboard}>
+                                        Copy</button>
+
+
+                                    }
+                                  </div>
+
+                                </div>
+                              </div>
 
                             </div>
-                         </div>
-                         
-                         </div>
-                        :
-                        <div>
-                        <p  className="text-danger float-left">Please upload the question to IPFS !!</p>
-                        </div>
-                      }
-                        </div>
+                            :
+                            <div>
+                              <p className="text-danger float-left">Please upload the question to IPFS !!</p>
+                            </div>
+                        }
+                      </div>
                     </div>
 
-                    </div>
-                    <div className="row ">
+                  </div>
+                  <div className="row ">
                     {
                       this.state.fileHash ?
-                      <div className="col-md-4">
-                      <button className="btn btn-outline-primary">
-                        Add Question
+                        <div className="col-md-4">
+                          <button onClick={() => this.addQuestion()} className="btn btn-outline-primary">
+                            Add Question
                       </button>
-                    </div>
-                  
+                        </div>
 
-                  :
-                  <div className="col-md-4">
-                      <button className="btn btn-secondary" disabled>
-                        Add Question
+
+                        :
+                        <div className="col-md-4">
+                          <button className="btn btn-secondary" disabled>
+                            Add Question
                       </button>
-                    </div>
-                  
+                        </div>
+
 
                     }
-                    </div>
+                  </div>
                 </div>
 
 
@@ -238,26 +247,26 @@ class Home extends Component {
                       "and" and the Little Blind
                     </div>
 
-                  
+
                   </div>
-                      
+
 
                   <div className="row mt-4 ">
-                      <div className="col-md-12">
+                    <div className="col-md-12">
                       <NavLink to='/addAnswer' >
-                      <button className="btn btn-primary float-right" >
-                        Answer question
+                        <button className="btn btn-primary float-right" >
+                          Answer question
                       </button>
                       </NavLink>
-                      </div>
+                    </div>
                   </div>
 
                 </div>
-                
 
 
 
-               
+
+
               </div>
             </div>
           </div>
