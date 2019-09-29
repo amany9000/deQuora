@@ -16,10 +16,10 @@ class Login extends Component {
             </div>
             <div className="col-md-6">
               <div className="auth__auth">
-                <h1 className="auth__title">Welcome to Dequora !!</h1>
+                <h1 className="auth__title">Welcome to deQuora !!</h1>
                 <p>A blockchain based questions & answer application</p>
                 <form className="form">
-                  <label>Email</label>
+                  {/* <label>Email</label>
                   <input
                     type="text"
                     name="email"
@@ -33,7 +33,7 @@ class Login extends Component {
                     id="password"
                     placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
                     autoComplete="off"
-                  />
+                  /> */}
                   <NavLink to = '/home'>.
                   <button  className="button button__accent">
                      Click here to get started !

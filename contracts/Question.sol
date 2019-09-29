@@ -1,8 +1,8 @@
-pragma solidity ^0.5.8;
+pragma solidity ^0.4.17;
 
 contract QuestionStore {
     mapping(address => uint) public upVoterRating;
-    Question[] public askedQuestions;
+    address[] public askedQuestions;
     mapping(address => bool) public askedQuestionsMap;
 
     function getVoterRating(address payable voter) public view returns (uint){ 
@@ -15,7 +15,7 @@ contract QuestionStore {
     }
 
     function askQuestion(string memory Title, string memory Tag, string memory QuestionHash, uint Target, uint  Deadline) public payable{
-        Question newQuestion = (new Question).value(msg.value)(Title, Tag, msg.sender, QuestionHash, Target, Deadline);
+        address newQuestion = (new Question).value(msg.value)(Title, Tag, msg.sender, QuestionHash, Target, Deadline);
         askedQuestions.push(newQuestion);
         askedQuestionsMap[address(newQuestion)] = true;
     }

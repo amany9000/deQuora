@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import Navigation from "../layout/Navbar";
 import "../../css/home.css";
 import { NavLink } from 'react-router-dom';
+import axios from 'axios'
+import {ipfsAdd, ipfsGet} from '../../utils/ipfs'
 
 class Home extends Component {
 
 
   state = {
-    fileHash: 'null',
+    fileHash: null,
     copySuccess: '',
     votes: 0,
     comments: 0,
@@ -15,16 +17,21 @@ class Home extends Component {
     description: ""
   }
 
-  buttonClick = () => {
+  buttonClick =  () => {
     this.setState({
-      fileHash: "ASIFFD5458478423DFDDFUH34"
+      fileHash: this.addQuestion()
     })
   }
 
   addQuestion = () => {
     const { title, description } = this.state
-    console.log(title, description)
-    this.props.questionStoreInstance.methods.askQuestion('dipansh', 'tag', 'des', 3, 4).send({ from: this.props.accounts[5], value: 10 })
+    console.log( description)
+    let hash = ipfsAdd(description)
+    //hash.then(val => console.log(val))
+    //console.log("hash",hash)
+    return hash
+    //this.props.questionStoreInstance.methods.askQuestion('dipansh', 'tag', 'des', 3, 4).send({ from: this.props.accounts[5], value: 10 })
+    
   }
 
   copyToClipboard = (e) => {
@@ -45,7 +52,7 @@ class Home extends Component {
         <div className="content-wrapper">
           <div className="w-container">
             <div className="w-row">
-              {/* <div className="w-col w-col-3">
+              <div className="w-col w-col-3">
                 <div className="sidebar-header">Feed</div>
                 <div className="white-wrapper">
                   <ul className="feed">
@@ -96,7 +103,7 @@ class Home extends Component {
                     </li>
                   </ul>
                 </div>
-              </div> */}
+              </div>
 
 
 
@@ -119,7 +126,7 @@ class Home extends Component {
                         className="card-title mt-2"
                         style={{ fontSize: "20px", marginLeft: "-25px" }}
                       >
-                        Rohan Dhoot
+                        Randi hai bhains
                       </div>
                     </div>
                   </div>
@@ -169,8 +176,7 @@ class Home extends Component {
                                   <div className="col-md-6">
 
                                     <input style={{ width: "300px", height: "40px" }} type="text" editable="false"
-                                      ref={(textarea) => this.textArea = textarea}
-                                      value='ASIFFD5458478423DFDDFUH34' />
+                                      ref={(textarea) => this.textArea = textarea}/>
 
                                   </div>
                                   <div className="col-md-3">
@@ -237,7 +243,7 @@ class Home extends Component {
                         </span>
                       </div>
                       <div className="card-subtitle text-muted">
-                        Rohan Dhoot| IIITV
+                        Yeh koi randi khana h ??? !!!| IIITV
                       </div>
                     </div>
                     <div className="body ml-3">
