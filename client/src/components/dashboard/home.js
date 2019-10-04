@@ -18,20 +18,13 @@ class Home extends Component {
   }
 
   buttonClick =  () => {
-    this.setState({
-      fileHash: this.addQuestion()
-    })
-  }
-
-  addQuestion = () => {
     const { title, description } = this.state
-    console.log( description)
-    let hash = ipfsAdd(description)
-    //hash.then(val => console.log(val))
-    //console.log("hash",hash)
-    return hash
-    //this.props.questionStoreInstance.methods.askQuestion('dipansh', 'tag', 'des', 3, 4).send({ from: this.props.accounts[5], value: 10 })
-    
+    ipfsAdd({ title, description }).then((resp) => {
+      console.log("resp",resp.Hash)
+      this.setState({
+        fileHash: resp.Hash
+      })
+    })
   }
 
   copyToClipboard = (e) => {
@@ -126,7 +119,7 @@ class Home extends Component {
                         className="card-title mt-2"
                         style={{ fontSize: "20px", marginLeft: "-25px" }}
                       >
-                        Randi hai bhains
+                        What's your question?
                       </div>
                     </div>
                   </div>
@@ -176,6 +169,7 @@ class Home extends Component {
                                   <div className="col-md-6">
 
                                     <input style={{ width: "300px", height: "40px" }} type="text" editable="false"
+                                      value={this.state.fileHash}
                                       ref={(textarea) => this.textArea = textarea}/>
 
                                   </div>
