@@ -7,20 +7,25 @@ import {ipfsAdd, ipfsGet} from '../../utils/ipfs'
 
 class Home extends Component {
 
-
   state = {
     fileHash: null,
     copySuccess: '',
     votes: 0,
     comments: 0,
     title: '',
-    description: ""
+    description: "",
+    questions: []
+  }
+
+  addQuestion =  () => {
+    console.log("add")
+    ipfsGet("QmZRsNPVZK67g8ETn5ciLxpVQmrpZLaRXqGQyNo5s7Gg7W").then((ret) => {console.log("ret",ret)})
   }
 
   buttonClick =  () => {
     const { title, description } = this.state
     ipfsAdd({ title, description }).then((resp) => {
-      console.log("resp",resp.Hash)
+      //console.log("resp",resp.Hash)
       this.setState({
         fileHash: resp.Hash
       })
@@ -36,6 +41,9 @@ class Home extends Component {
     this.setState({ copySuccess: 'Copied!' });
   };
 
+  componentDidMount() {
+     //ipfsGet("QmZm7LFRheW2Rp2GFAgSQy65148YhZBkoCrCvyrYKJDUiY")
+  }
 
   render() {
     return (
