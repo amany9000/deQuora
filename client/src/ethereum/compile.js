@@ -12,7 +12,10 @@ const source = fs.readFileSync(projectPath, "utf-8");
 const input = {
     language: 'Solidity',
     sources: {
-        'Question.sol' : {
+        'Question' : {
+            content: source
+        },
+        'QuestionStore' : {
             content: source
         }
     },
