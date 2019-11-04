@@ -19,28 +19,30 @@ const readQuestion = async (pass) => {
 	const web3 = getWeb3(pass);
 	const accounts = await  web3.eth.getAccounts();
 	const store = await new web3.eth.Contract(compiledStore.QuestionStore.abi, 
-	"0xd05453792e7294682E92bcFf4023b116bA83Ca09");
+	"0xA094e130359Da96C6e76F8347676D988ea7f1672");
 
 	return await store.methods.askedQuestions(0).call();
 } 
 
-
+/*
 readQuestion("hold capable clock raven sentence gun example thought name wonder chuckle spin").then(async (deployedQues)=> {
 	console.log(deployedQues);
 })
-
+*/
 const askQuestion = async (Title, Tag, QuestionHash, Target, Deadline, pass) => {
 	const web3 = getWeb3(pass);				
 	const accounts = await  web3.eth.getAccounts();
 	const store = await new web3.eth.Contract(compiledStore.QuestionStore.abi, 
-	"0xd05453792e7294682E92bcFf4023b116bA83Ca09");
-	return await store.methods.askQuestion(Title, Tag, QuestionHash, Target, Deadline).send(({gas: "3000000", from: accounts[0]}));	
-	// delete dep;
-	//return await store.methods.getDeployedInitiatives().call()
+	"0xA094e130359Da96C6e76F8347676D988ea7f1672");
+	const dep = await store.methods.getDeployedQuestions().call();
+	console.log("before",dep);
+	await store.methods.askQuestion(Title, Tag, QuestionHash, Target, Deadline).send(({gas: "3000000", from: accounts[0]}));	
+	delete dep;
+	return await store.methods.getDeployedQuestions().call();
 } 
-/*
+///*
 askQuestion("Why we fall, Bruce", "Batman", "Qmk2wsa3131sad133e31", 1, 123, "hold capable clock raven sentence gun example thought name wonder chuckle spin").then(async(add) => {
 	console.log("after deployment - ",add);
 });
-*/
+//*/
 module.exports = {readQuestion, getWeb3, askQuestion};

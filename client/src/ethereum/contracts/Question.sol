@@ -10,6 +10,10 @@ contract QuestionStore {
         upVoterRating[voter] = val;
     }
 
+    function getDeployedQuestions() public view returns (address[] memory){
+        return askedQuestions;
+    }
+
     function askQuestion(string memory Title, string memory Tag, string memory QuestionHash, uint Target, uint  Deadline) public payable{
         address newQuestion = address((new Question).value(msg.value)(Title, Tag, msg.sender, QuestionHash, Target, Deadline));
         askedQuestions.push(newQuestion);
@@ -35,9 +39,7 @@ contract Question {
     uint public answerCount;
     
     mapping(address => bool) upVoteBool;
-    
-    Answer [] public answers;
-    
+
     struct Answer{
         address payable [] upVoters;
         uint upVoteCount;
@@ -46,6 +48,8 @@ contract Question {
         int questionerResponse;
         uint sumVoterRating;
     }
+
+    Answer [] public answers;
 
     constructor (string memory Title, string memory Tag, address payable Questioner, string memory QuestionHash, uint Target, uint  Deadline) public payable{
         title = Title;
@@ -63,7 +67,7 @@ contract Question {
         isRetracted = false;
         answerCount = 0;
     }
-    
+
     function answer(string memory hash) public {
         require(!isRetracted && (answerIndex == -1));
         
