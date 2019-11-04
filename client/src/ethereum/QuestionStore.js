@@ -15,13 +15,14 @@ const web3 = new Web3(provider);
 return web3;	
 } 
 
-const readQuestion = async (pass) => {
+const readQuestions = async (pass) => {
 	const web3 = getWeb3(pass);
-	const accounts = await  web3.eth.getAccounts();
+	//const accounts = await  web3.eth.getAccounts();
 	const store = await new web3.eth.Contract(compiledStore.QuestionStore.abi, 
 	"0xA094e130359Da96C6e76F8347676D988ea7f1672");
 
-	return await store.methods.askedQuestions(0).call();
+	const ques = await store.methods.getDeployedQuestions().call();
+	return ques;
 } 
 
 /*
@@ -31,6 +32,7 @@ readQuestion("hold capable clock raven sentence gun example thought name wonder 
 */
 const askQuestion = async (Title, Tag, QuestionHash, Target, Deadline, pass) => {
 	const web3 = getWeb3(pass);				
+	console.log("hey")
 	const accounts = await  web3.eth.getAccounts();
 	const store = await new web3.eth.Contract(compiledStore.QuestionStore.abi, 
 	"0xA094e130359Da96C6e76F8347676D988ea7f1672");
@@ -40,9 +42,9 @@ const askQuestion = async (Title, Tag, QuestionHash, Target, Deadline, pass) => 
 	delete dep;
 	return await store.methods.getDeployedQuestions().call();
 } 
-///*
+/*
 askQuestion("Why we fall, Bruce", "Batman", "Qmk2wsa3131sad133e31", 1, 123, "hold capable clock raven sentence gun example thought name wonder chuckle spin").then(async(add) => {
 	console.log("after deployment - ",add);
 });
-//*/
-module.exports = {readQuestion, getWeb3, askQuestion};
+*/
+module.exports = {readQuestions, getWeb3, askQuestion};

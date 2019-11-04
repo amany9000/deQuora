@@ -1,11 +1,11 @@
 # deQuora - the decentarlized quora
 
-![Home](./client/src/img/home)
+![Home](./client/src/img/home.png)
 
 ### About
 An Ethereum based Decentralised Quora. It is designed to provide better answers to the questions by providing incentives to asnwerers and voters.
 
-![Page](./client/src/img/page)
+![Page](./client/src/img/page.png)
 
 ### Development
 
