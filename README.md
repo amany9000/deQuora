@@ -1,9 +1,11 @@
 # deQuora - the decentarlized quora
 
+
+## About
+An Ethereum based Decentralised Quora. It is designed to provide better answers to the questions by providing incentives to asnwerers and voters.
+
 ![Home](./client/src/img/home.png)
 
-### About
-An Ethereum based Decentralised Quora. It is designed to provide better answers to the questions by providing incentives to asnwerers and voters.
 
 ![Page](./client/src/img/page.png)
 
@@ -12,7 +14,14 @@ An Ethereum based Decentralised Quora. It is designed to provide better answers 
 -   Install Dependencies.
 
 ```sh
+cd client
 npm install
+```
+
+-   Compile the Smart Contract.
+
+```sh
+node src/ethereum/compile.js 
 ```
 
 -   To run the Dapp.
